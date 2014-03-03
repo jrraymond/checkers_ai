@@ -47,24 +47,52 @@ class node():
         value += val_change
         
         
-    def evolve(self):
-        '''begins a random evolution process for this neuron'''
-        mutation = randrange(0,2)
-        random_value = randrange(-5,6)
-        
-        if mutation = 0: #mutates threshold value
-            threshold_value += random_value
-        elif mutation = 1: #mutates pulse_strength
-            pulse_strength += random_value
 
         
-    
+class input_node(node):
+	'''immutable, unevovlable  nodes which contain input data from the environment'''
+	pass
+
+
+class output_node(node):
+	'''mutable, unevolvable  nodes which pass information to whatever output format is desired'''
+	pass
+
+	##############################
+	# justin,
+	#	I think you might have been right about having nodes 'look back' rather than pulsing forward.
+	#	It may be better to have a static set of input nodes with internal values that are examined 
+	#	by the main network.  That seems more simple than 'pulsing' a set value constantly  into
+	#	the network.  Also, it might be possible to just define a differet type of node interaction
+	#	(ie, a lookback AND a pulse function), but that might be overly complicated.
+	#
+	#									-tadashi
+	#############################
+
+class main_node(node):
+	'''mutable, evolvable nodes which allow the system to process data'''
+
+	def evolve(self):
+        	'''begins a random evolution process for this neuron'''
+        	mutation = randrange(0,2)
+        	random_value = randrange(-5,6)
+        
+        	if mutation = 0: #mutates threshold value
+            		threshold_value += random_value
+        	elif mutation = 1: #mutates pulse_strength
+			pulse_strength += random_value
+
+
 class network():
-
-    def __init__(self,size):
-        self.ins = []
+	'''a network of nodes which contain three general classes:
+		1.  input nodes (nodes which function as sensory inputs for the environment)
+		2.  main nodes (nodes which process data from input nodes and output data to the output nodes)
+		3.  output nodes (nodes from which a final output is extracted)
+	'''
+    def __init__(self,size,in_set = None, out_set = None):
+        self.ins = [in_set] #set of nodes from which input data comes
         self.nodes = []
-        self.out = Node("OUT")
+        self.outs = [out_set]i #set of nodes from which output data is extracted
         
         #create in nodes
         for i in range(32):
