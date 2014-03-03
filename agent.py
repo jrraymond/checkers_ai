@@ -1,8 +1,7 @@
 import random
 
 
-
-def Node():
+class node():
 
     def __init__(self, 
                  name = None, 
@@ -21,7 +20,7 @@ def Node():
         self.axons = axons #list of axons (connected neurons)
 
 
-    def addAxon(self, node):
+    def add_axon(self, node):
         '''adds an axon to the node'''
         self.axons.append(node)
         
@@ -37,14 +36,14 @@ def Node():
         else:
             return False
         
-    def step1(self):
-        '''initiates step1 for this neuron'''
+    def pulse_check(self):
+        '''readies all applicable neurons to fire'''
         if _val_check == True:
             for axon in axons:
                 axon.pulse(pulse_strength)
     
-    def step2(self):
-        '''initiates step 2 for this neuron'''
+    def value_set(self):
+        '''fires all applicable neurons'''
         value += val_change
         
         
@@ -60,7 +59,7 @@ def Node():
 
         
     
-def Network():
+class network():
 
     def __init__(self,size):
         self.ins = []
@@ -88,13 +87,11 @@ def Network():
                 
     def check_and_pulse(self):
         for n in nodes:
-            n.step1
+            n.pulse_check()
     
     def change_values(self):
         for n in nodes:
-            n.step2
-
-
+            n.value_set()
 
 
 

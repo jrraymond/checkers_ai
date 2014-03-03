@@ -1,0 +1,22 @@
+to do:
+work on an agent generator
+define how imput/output nodes work and interact with the nework
+write system to store and evolve agents in a genetic fashion
+	how to meld networks together 
+	how to select important parts of the network to blend
+	can we store agents in some sort of network database?
+develop system to select agents and have them compete
+
+
+
+
+
+notes/thoughts:
+1. can we write a system to define sub-networks to evolve with relative indpendance?  
+
+2. akin to 1, can we make evolution somewhat modular?
+
+
+
+
+
